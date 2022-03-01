@@ -1,0 +1,52 @@
+#include<cstdlib>
+#include<iostream>
+#include<ctime>
+using namespace std;
+	/*
+	9. Calcolare n numeri random compresi tra -10 e 2000; Dire se sono stati calcolati solo numeri positivi. Utilizzare
+funzione input per inserire n<1000) e la funzione Controlla (che restituisce un valore bool)
+	*/
+int input()
+{
+	int n;
+	cout<<"Inserire una quantita' N di numeri minore di 1000"<<endl;
+	do{
+		cin>>n;
+		if(n<=0 or n>=1000)
+		cout<<"Quantita' errata, reinserisci"<<endl;
+	} while(n<=0 or n>=1000);
+	
+	return n;
+}
+bool controlla(int x)
+{
+	bool tipo=true;
+	if(x<0)
+	tipo=false;
+	
+	return tipo;
+}
+
+
+int main()
+{
+	srand(time(NULL));
+	int x, n, c=0;
+	
+	n=input();
+	
+	cout<<"I "<<n<<" numeri random calcolati sono: "<<endl;
+	
+	while(c<n){
+		x=rand()%2011-10;
+		cout<<x<<endl;
+		c++;
+	}
+	
+	if(controlla(x)==1)
+	cout<<"Sono usciti solo numeri positivi"<<endl;
+	else
+	cout<<"Sono usciti numeri positivi e negativi"<<endl;
+	
+	return 0;
+}
